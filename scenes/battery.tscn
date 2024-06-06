@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://18nmgc341c4b"]
+
+[ext_resource type="Texture2D" uid="uid://uf7uuh247fha" path="res://assets/batteryoutline.png" id="1_yce3p"]
+
+[node name="Battery" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-836, -493)
+rotation = 1.5708
+scale = Vector2(1.76128, 2.52603)
+texture = ExtResource("1_yce3p")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-931, -1022)
+rotation = 1.5708
+color = Color(0.247059, 1, 0.156863, 1)
+polygon = PackedVector2Array(320, -582, 745, -583, 744, 518, 314, 518)

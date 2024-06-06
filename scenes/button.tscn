@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://du8hb4kg52eql"]
+
+[ext_resource type="Theme" uid="uid://cyrs4r2ws60k8" path="res://default.tres" id="1_ht5q1"]
+
+[node name="Button" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 90.0
+offset_bottom = 62.0
+theme = ExtResource("1_ht5q1")
+text = "Yes"

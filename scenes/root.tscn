@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://fui26yhlktth"]
+
+[ext_resource type="Texture2D" uid="uid://uf7uuh247fha" path="res://assets/batteryoutline.png" id="1_8hflk"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_ke1ai"]
+
+[sub_resource type="Theme" id="Theme_myqoj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb5xl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_551qq"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnje5"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Root" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="YesButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 121.0
+offset_top = 456.0
+offset_right = 324.0
+offset_bottom = 511.0
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 434.0
+offset_top = 452.0
+offset_right = 675.0
+offset_bottom = 523.0
+text = "No"
+
+[node name="QuestionBox" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 313.0
+offset_top = 296.0
+offset_right = 555.0
+offset_bottom = 416.0
+text = "This is the question box"
+autowrap_mode = 3
+
+[node name="StatBox" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 682.0
+offset_top = 292.0
+offset_right = 924.0
+offset_bottom = 412.0
+text = "This is the stat box
+"
+autowrap_mode = 3
+
+[node name="BlissBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 342.29
+offset_top = 133.164
+offset_right = 737.29
+offset_bottom = 176.164
+theme = SubResource("Theme_myqoj")
+theme_override_styles/background = SubResource("StyleBoxFlat_eb5xl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_551qq")
+value = 50.0
+
+[node name="IgnoranceBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 350.29
+offset_top = 206.164
+offset_right = 745.29
+offset_bottom = 249.164
+theme = SubResource("Theme_myqoj")
+theme_override_styles/background = SubResource("StyleBoxFlat_eb5xl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bnje5")
+value = 50.0
+
+[node name="BatteryBliss" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(558.431, 154.164)
+rotation = 1.5708
+scale = Vector2(0.18033, 0.868869)
+texture = ExtResource("1_8hflk")
+
+[node name="BatteryIgnorance" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(564.33, 228.524)
+rotation = 1.5708
+scale = Vector2(0.169807, 0.878513)
+texture = ExtResource("1_8hflk")
+
+[node name="NextButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 964.0
+offset_top = 170.0
+offset_right = 1205.0
+offset_bottom = 241.0
+text = "Next"
+
+[node name="ThirdButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 822.0
+offset_top = 463.0
+offset_right = 1063.0
+offset_bottom = 534.0
+text = "Third"
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_ke1ai")
+
+[connection signal="button_down" from="CanvasLayer/YesButton" to="GameManager" method="_on_yes_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/NoButton" to="GameManager" method="_on_no_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/NextButton" to="GameManager" method="_on_next_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/ThirdButton" to="GameManager" method="_on_third_button_button_down"]
