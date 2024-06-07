@@ -1,7 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 .DS_Store
-scripts/IgnoranceIsBlissQuestions.csv
-scripts/IgnoranceIsBlissQuestions.csv.import
-scripts/GiveorTakeQuestions.csv
-scripts/GiveorTakeQuestions.csv.import
+#scripts/IgnoranceIsBlissQuestions.csv
+#scripts/IgnoranceIsBlissQuestions.csv.import
+#scripts/GiveorTakeQuestions.csv
+#scripts/GiveorTakeQuestions.csv.import
