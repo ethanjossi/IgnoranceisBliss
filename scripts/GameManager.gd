@@ -20,10 +20,20 @@ const YES_RESP_IDX = 1
 const NO_RESP_IDX = 2
 const THIRD_IDX = 3
 const THIRD_RESP_IDX = 4
+const YES_POINTS_IDX = 5
+const NO_POINTS_IDX = 6
+const THIRD_POINTS_IDX = 7
+enum Button_States {
+	YES,
+	NO,
+	THIRD
+}
 
 # Global Variables
 var data
 var question_counter : int = 1
+var button_choice
+var disable_next : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,32 +50,44 @@ func _process(delta):
 
 
 func _on_next_button_button_down():
-	if question_counter == data.length()-1: # if we are at the end of questions
+	if disable_next:
+		return
+	if question_counter == data.records.size()-1: # if we are at the end of questions
 		return
 	question_counter += 1
 	question_box.text = data.records[question_counter][QUESTION_IDX]
 	stat_box.text = ""
 	third_button.text = data.records[question_counter][THIRD_IDX]
+	disable_next = true
+	match button_choice:
+		Button_States.NO:
+			bliss_bar.value += int(data.records[question_counter][NO_POINTS_IDX])
+			ignorance_bar.value += int(data.records[question_counter][NO_POINTS_IDX])
+		Button_States.YES:
+			bliss_bar.value += int(data.records[question_counter][YES_POINTS_IDX])
+			ignorance_bar.value += int(data.records[question_counter][YES_POINTS_IDX])
+		Button_States.THIRD:
+			bliss_bar.value += int(data.records[question_counter][THIRD_POINTS_IDX])
+			ignorance_bar.value += int(data.records[question_counter][THIRD_POINTS_IDX])
 	print("next")
 
 
 func _on_no_button_button_down():
 	stat_box.text = data.records[question_counter][NO_RESP_IDX]
-	bliss_bar.value -= 5
-	ignorance_bar.value -= 5
+	button_choice = Button_States.NO
+	disable_next = false
 	print("no")
 
 
 func _on_yes_button_button_down():
 	stat_box.text = data.records[question_counter][YES_RESP_IDX]
-	bliss_bar.value += 5
-	ignorance_bar.value += 5
+	button_choice = Button_States.YES
+	disable_next = false
 	print("yes")
 
 
 func _on_third_button_button_down():
 	stat_box.text = data.records[question_counter][THIRD_RESP_IDX]
-	bliss_bar.value += 5
-	ignorance_bar.value += 5
-
+	button_choice = Button_States.THIRD
+	disable_next = false
 

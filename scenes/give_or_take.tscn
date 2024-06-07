@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://b513tc17gjsqq"]
+
+[ext_resource type="Texture2D" uid="uid://cr32pommt8m7e" path="res://assets/Card Deck.jpeg" id="1_31mkm"]
+[ext_resource type="Texture2D" uid="uid://dxsxfwwcb50xk" path="res://assets/Council.jpeg" id="2_1gynk"]
+[ext_resource type="Texture2D" uid="uid://st1mi1d1nb2c" path="res://assets/Person.png" id="3_pv4rm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6m58m"]
+bg_color = Color(0.72549, 0.72549, 0.72549, 0.701961)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqu57"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ors4t"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="GiveOrTake" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CardDeck" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(490.219, 319.062)
+scale = Vector2(1.97917, 2.03523)
+texture = ExtResource("1_31mkm")
+
+[node name="CardText" type="Label" parent="CanvasLayer"]
+offset_left = 579.438
+offset_top = 207.0
+offset_right = 723.438
+offset_bottom = 431.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_6m58m")
+text = "Card Text goes here"
+autowrap_mode = 3
+
+[node name="Give" type="Button" parent="CanvasLayer"]
+offset_left = 754.0
+offset_top = 180.0
+offset_right = 910.0
+offset_bottom = 237.0
+text = "Give"
+
+[node name="Take" type="Button" parent="CanvasLayer"]
+offset_left = 758.0
+offset_top = 378.0
+offset_right = 912.0
+offset_bottom = 432.0
+text = "Take"
+
+[node name="Council" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(572, 76)
+scale = Vector2(0.245156, 0.219161)
+texture = ExtResource("2_1gynk")
+
+[node name="Person" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579, 567)
+scale = Vector2(0.63, 0.656667)
+texture = ExtResource("3_pv4rm")
+
+[node name="Progress" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 90.0
+offset_top = 578.0
+offset_right = 574.0
+offset_bottom = 666.0
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_iqu57")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ors4t")
+min_value = -100.0
+show_percentage = false
+
+[node name="100" type="Label" parent="CanvasLayer"]
+offset_left = 186.0
+offset_top = 88.0
+offset_right = 226.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 24
+text = "100"
