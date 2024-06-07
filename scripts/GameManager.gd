@@ -1,7 +1,6 @@
 extends Node
 
 # Exports
-@export var testdisplay : Label
 
 # OnReadys
 @onready var question_box = %QuestionBox
@@ -12,6 +11,10 @@ extends Node
 @onready var ignorance_bar = %IgnoranceBar
 @onready var next_button = %NextButton
 @onready var third_button = %ThirdButton
+@onready var exit = %Exit
+
+# Packed Scenes
+var main_menu = load("res://scenes/main.tscn")
 
 # Constants
 const CSV_FILE = "IgnoranceIsBlissQuestions.csv"
@@ -37,7 +40,6 @@ var disable_next : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
 	data = preload(CSV_FILE)
 	# Setup the first question
 	question_box.text = data.records[question_counter][QUESTION_IDX]
@@ -91,3 +93,6 @@ func _on_third_button_button_down():
 	button_choice = Button_States.THIRD
 	disable_next = false
 
+
+func _on_exit_button_down():
+	get_tree().change_scene_to_packed(main_menu)

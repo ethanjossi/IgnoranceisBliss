@@ -171,6 +171,14 @@ position = Vector2(579, 327)
 scale = Vector2(1.28722, 0.967778)
 texture = ExtResource("2_88oye")
 
+[node name="Exit" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1028.0
+offset_top = 5.0
+offset_right = 1153.0
+offset_bottom = 58.0
+text = "Exit"
+
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_ke1ai")
 
@@ -178,3 +186,4 @@ script = ExtResource("1_ke1ai")
 [connection signal="button_down" from="CanvasLayer/NoButton" to="GameManager" method="_on_no_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/NextButton" to="GameManager" method="_on_next_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/ThirdButton" to="GameManager" method="_on_third_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Exit" to="GameManager" method="_on_exit_button_down"]
