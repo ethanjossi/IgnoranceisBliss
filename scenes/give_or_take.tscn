@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b513tc17gjsqq"]
+[gd_scene load_steps=10 format=3 uid="uid://b513tc17gjsqq"]
 
 [ext_resource type="Texture2D" uid="uid://cr32pommt8m7e" path="res://assets/Card Deck.jpeg" id="1_31mkm"]
 [ext_resource type="Texture2D" uid="uid://dxsxfwwcb50xk" path="res://assets/Council.jpeg" id="2_1gynk"]
 [ext_resource type="Texture2D" uid="uid://st1mi1d1nb2c" path="res://assets/Person.png" id="3_pv4rm"]
 [ext_resource type="Script" path="res://scripts/GameManagerGiveorTake.gd" id="4_7qcgu"]
+[ext_resource type="Texture2D" uid="uid://cacfcr576xt26" path="res://scenes/handofgodbackground.jpeg" id="5_fswq2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6m58m"]
 bg_color = Color(0.72549, 0.72549, 0.72549, 0.701961)
@@ -97,24 +98,27 @@ offset_left = 186.0
 offset_top = 88.0
 offset_right = 226.0
 offset_bottom = 111.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "100"
+text = "Give Limit"
 
 [node name="-100" type="Label" parent="CanvasLayer"]
 offset_left = 187.0
 offset_top = 551.0
 offset_right = 237.0
 offset_bottom = 585.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "-100"
+text = "Take Limit"
 
 [node name="0" type="Label" parent="CanvasLayer"]
 offset_left = 188.0
 offset_top = 320.0
 offset_right = 213.0
 offset_bottom = 354.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "0
+text = "Balanced
 "
 
 [node name="Exit" type="Button" parent="CanvasLayer"]
@@ -163,6 +167,33 @@ autowrap_mode = 3
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("4_7qcgu")
+
+[node name="Handofgodbackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(575, 322.5)
+scale = Vector2(1.12891, 1.20865)
+texture = ExtResource("5_fswq2")
+
+[node name="Society" type="Label" parent="."]
+offset_left = 521.0
+offset_top = 141.0
+offset_right = 629.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Society"
+uppercase = true
+
+[node name="Self" type="Label" parent="."]
+offset_left = 548.0
+offset_top = 455.0
+offset_right = 656.0
+offset_bottom = 495.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Self
+"
+uppercase = true
 
 [connection signal="button_down" from="CanvasLayer/Give" to="GameManager" method="_on_give_button_down"]
 [connection signal="button_down" from="CanvasLayer/Take" to="GameManager" method="_on_take_button_down"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dolv5f1uarc2w"]
+[gd_scene load_steps=3 format=3 uid="uid://dolv5f1uarc2w"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_aehyi"]
+[ext_resource type="Texture2D" uid="uid://cacfcr576xt26" path="res://scenes/handofgodbackground.jpeg" id="2_dg0jh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_aehyi")
@@ -22,6 +23,11 @@ offset_right = 913.0
 offset_bottom = 407.0
 theme_override_font_sizes/font_size = 25
 text = "Play Ignorance or Bliss"
+
+[node name="Handofgodbackground" type="Sprite2D" parent="."]
+position = Vector2(575, 325)
+scale = Vector2(1.12305, 1.21053)
+texture = ExtResource("2_dg0jh")
 
 [connection signal="button_down" from="CanvasLayer/GTButton" to="." method="_on_gt_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/IBButton" to="." method="_on_ib_button_button_down"]
