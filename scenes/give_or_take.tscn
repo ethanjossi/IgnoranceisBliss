@@ -1,26 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://b513tc17gjsqq"]
+[gd_scene load_steps=14 format=3 uid="uid://b513tc17gjsqq"]
 
 [ext_resource type="Texture2D" uid="uid://cr32pommt8m7e" path="res://assets/Card Deck.jpeg" id="1_31mkm"]
 [ext_resource type="Texture2D" uid="uid://dxsxfwwcb50xk" path="res://assets/Council.jpeg" id="2_1gynk"]
+[ext_resource type="Theme" uid="uid://csc0oj52kpol7" path="res://giveortake.tres" id="2_l7s7g"]
+[ext_resource type="Texture2D" uid="uid://cf72rkbeocnul" path="res://assets/playingcard.jpeg" id="2_wjj6c"]
 [ext_resource type="Texture2D" uid="uid://st1mi1d1nb2c" path="res://assets/Person.png" id="3_pv4rm"]
 [ext_resource type="Script" path="res://scripts/GameManagerGiveorTake.gd" id="4_7qcgu"]
 [ext_resource type="Texture2D" uid="uid://cacfcr576xt26" path="res://scenes/handofgodbackground.jpeg" id="5_fswq2"]
+[ext_resource type="AudioStream" uid="uid://g6ri47ors4m7" path="res://assets/organsound.mp3" id="8_86xgs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6m58m"]
-bg_color = Color(0.72549, 0.72549, 0.72549, 0.701961)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+bg_color = Color(0.72549, 0.72549, 0.72549, 0)
+border_width_top = 1
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqu57"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ors4t"]
 bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1k6o"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ls2f"]
+bg_color = Color(0.698039, 0.580392, 0.494118, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0wyt"]
+bg_color = Color(0.851769, 0.851769, 0.851769, 1)
 
 [node name="GiveOrTake" type="Node2D"]
 
@@ -31,44 +50,51 @@ position = Vector2(490.219, 319.062)
 scale = Vector2(1.97917, 2.03523)
 texture = ExtResource("1_31mkm")
 
+[node name="CardBackground" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(651.625, 320.875)
+scale = Vector2(0.329625, 0.360845)
+texture = ExtResource("2_wjj6c")
+
 [node name="GiveText" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 579.0
-offset_top = 207.0
-offset_right = 723.0
-offset_bottom = 319.0
+offset_left = 583.0
+offset_top = 209.0
+offset_right = 721.0
+offset_bottom = 318.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_6m58m")
 text = "Card Text goes here"
 autowrap_mode = 3
 
 [node name="TakeText" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 579.0
-offset_top = 316.0
-offset_right = 723.0
-offset_bottom = 432.0
+offset_left = 583.0
+offset_top = 318.0
+offset_right = 720.0
+offset_bottom = 434.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_6m58m")
 text = "Card Text goes here"
 autowrap_mode = 3
 
 [node name="Give" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 754.0
-offset_top = 180.0
-offset_right = 910.0
-offset_bottom = 237.0
+offset_left = 733.0
+offset_top = 192.0
+offset_right = 889.0
+offset_bottom = 249.0
+theme = ExtResource("2_l7s7g")
 text = "Give"
 
 [node name="Take" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 758.0
-offset_top = 378.0
-offset_right = 912.0
-offset_bottom = 432.0
+offset_left = 735.0
+offset_top = 385.0
+offset_right = 889.0
+offset_bottom = 439.0
+theme = ExtResource("2_l7s7g")
 text = "Take"
 
 [node name="Council" type="Sprite2D" parent="CanvasLayer"]
@@ -93,7 +119,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ors4t")
 min_value = -100.0
 show_percentage = false
 
-[node name="100" type="Label" parent="CanvasLayer"]
+[node name="GiveLimitText" type="Label" parent="CanvasLayer"]
 offset_left = 186.0
 offset_top = 88.0
 offset_right = 226.0
@@ -102,7 +128,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Give Limit"
 
-[node name="-100" type="Label" parent="CanvasLayer"]
+[node name="TakeLimitText" type="Label" parent="CanvasLayer"]
 offset_left = 187.0
 offset_top = 551.0
 offset_right = 237.0
@@ -111,7 +137,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Take Limit"
 
-[node name="0" type="Label" parent="CanvasLayer"]
+[node name="BalancedText" type="Label" parent="CanvasLayer"]
 offset_left = 188.0
 offset_top = 320.0
 offset_right = 213.0
@@ -123,10 +149,11 @@ text = "Balanced
 
 [node name="Exit" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 1036.0
+offset_left = 1037.0
 offset_top = 5.0
-offset_right = 1148.0
+offset_right = 1149.0
 offset_bottom = 45.0
+theme = ExtResource("2_l7s7g")
 text = "Exit"
 
 [node name="WinMessage" type="Label" parent="CanvasLayer"]
@@ -136,8 +163,8 @@ offset_left = 334.0
 offset_top = 180.0
 offset_right = 841.0
 offset_bottom = 457.0
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_a1k6o")
+theme = ExtResource("2_l7s7g")
+theme_override_font_sizes/font_size = 32
 text = "You helped out society and weren't too greedy. Congratulations!!"
 autowrap_mode = 3
 
@@ -148,8 +175,8 @@ offset_left = 330.0
 offset_top = 146.0
 offset_right = 837.0
 offset_bottom = 493.0
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_a1k6o")
+theme = ExtResource("2_l7s7g")
+theme_override_font_sizes/font_size = 32
 text = "Unfortunately, you were too selfish and took too much for yourself. Try helping others next time!"
 autowrap_mode = 3
 
@@ -160,21 +187,28 @@ offset_left = 331.0
 offset_top = 146.0
 offset_right = 838.0
 offset_bottom = 493.0
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_a1k6o")
+theme = ExtResource("2_l7s7g")
+theme_override_font_sizes/font_size = 32
 text = "Unfortunately, you didn't meet your own needs at all. Remember to also take care of yourself."
 autowrap_mode = 3
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("4_7qcgu")
+[node name="Instructions" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+offset_left = 269.0
+offset_top = 148.0
+offset_right = 925.0
+offset_bottom = 487.0
+theme = ExtResource("2_l7s7g")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ls2f")
+text = "Welcome to Give or Take!
 
-[node name="Handofgodbackground" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(575, 322.5)
-scale = Vector2(1.12891, 1.20865)
-texture = ExtResource("5_fswq2")
+Instructions: Cards are given with two statements. For each card, choose whether you want to give or take what is offered. Choose your options wisely and see the results!"
+autowrap_mode = 3
 
-[node name="Society" type="Label" parent="."]
+[node name="Society" type="Label" parent="CanvasLayer"]
 offset_left = 521.0
 offset_top = 141.0
 offset_right = 629.0
@@ -184,7 +218,7 @@ theme_override_font_sizes/font_size = 24
 text = "Society"
 uppercase = true
 
-[node name="Self" type="Label" parent="."]
+[node name="Self" type="Label" parent="CanvasLayer"]
 offset_left = 548.0
 offset_top = 455.0
 offset_right = 656.0
@@ -195,6 +229,32 @@ text = "Self
 "
 uppercase = true
 
+[node name="CloseInstructions" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+offset_left = 749.0
+offset_top = 416.0
+offset_right = 911.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j0wyt")
+text = "Close"
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("4_7qcgu")
+
+[node name="Handofgodbackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(575, 322.5)
+scale = Vector2(1.12891, 1.20865)
+texture = ExtResource("5_fswq2")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_86xgs")
+autoplay = true
+
 [connection signal="button_down" from="CanvasLayer/Give" to="GameManager" method="_on_give_button_down"]
 [connection signal="button_down" from="CanvasLayer/Take" to="GameManager" method="_on_take_button_down"]
 [connection signal="button_down" from="CanvasLayer/Exit" to="GameManager" method="_on_exit_button_down"]
+[connection signal="button_down" from="CanvasLayer/CloseInstructions" to="GameManager" method="_on_close_instructions_button_down"]

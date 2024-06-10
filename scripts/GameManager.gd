@@ -12,6 +12,7 @@ extends Node
 @onready var next_button = %NextButton
 @onready var third_button = %ThirdButton
 @onready var exit = %Exit
+@onready var complete_message = %CompleteMessage
 
 # Packed Scenes
 var main_menu = load("res://scenes/main.tscn")
@@ -55,6 +56,7 @@ func _on_next_button_button_down():
 	if disable_next:
 		return
 	if question_counter == data.records.size()-1: # if we are at the end of questions
+		complete_message.visible = true
 		return
 	question_counter += 1
 	question_box.text = data.records[question_counter][QUESTION_IDX]

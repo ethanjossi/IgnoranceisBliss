@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://fui26yhlktth"]
+[gd_scene load_steps=14 format=3 uid="uid://fui26yhlktth"]
 
 [ext_resource type="Texture2D" uid="uid://uf7uuh247fha" path="res://assets/batteryoutline.png" id="1_8hflk"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_ke1ai"]
+[ext_resource type="Theme" uid="uid://b4apqkmt4n6ts" path="res://ignoranceisbliss.tres" id="1_ss8nx"]
 [ext_resource type="Texture2D" uid="uid://cgp1r7qi6ep6j" path="res://assets/background.jpeg" id="2_88oye"]
+[ext_resource type="AudioStream" uid="uid://g6ri47ors4m7" path="res://assets/organsound.mp3" id="5_cf4ee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4h7m"]
 bg_color = Color(0, 0, 0, 0.588235)
@@ -34,6 +36,18 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfdem"]
 bg_color = Color(1, 1, 1, 0.737255)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i483"]
+bg_color = Color(0.317647, 0, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="IgnoranceIsBliss" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -44,6 +58,7 @@ offset_left = 118.0
 offset_top = 511.0
 offset_right = 360.0
 offset_bottom = 589.0
+theme = ExtResource("1_ss8nx")
 text = "Yes"
 
 [node name="NoButton" type="Button" parent="CanvasLayer"]
@@ -52,6 +67,7 @@ offset_left = 488.0
 offset_top = 514.0
 offset_right = 729.0
 offset_bottom = 585.0
+theme = ExtResource("1_ss8nx")
 text = "No"
 
 [node name="QuestionBox" type="Label" parent="CanvasLayer"]
@@ -90,23 +106,23 @@ value = 50.0
 
 [node name="IgnoranceBar" type="ProgressBar" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 224.29
-offset_top = 140.164
-offset_right = 619.29
-offset_bottom = 183.164
+offset_left = 219.569
+offset_top = 140.0
+offset_right = 614.569
+offset_bottom = 183.0
 theme = SubResource("Theme_myqoj")
 theme_override_styles/background = SubResource("StyleBoxFlat_eb5xl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bnje5")
 value = 50.0
 
-[node name="BatteryBliss" type="Sprite2D" parent="CanvasLayer"]
+[node name="BatteryIgnorance" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(432.431, 88.1644)
 rotation = 1.5708
 scale = Vector2(0.18033, 0.868869)
 texture = ExtResource("1_8hflk")
 
-[node name="BatteryIgnorance" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(438.33, 162.524)
+[node name="BatteryBliss" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(433.899, 162.524)
 rotation = 1.5708
 scale = Vector2(0.169807, 0.878513)
 texture = ExtResource("1_8hflk")
@@ -117,14 +133,17 @@ offset_left = 824.0
 offset_top = 96.0
 offset_right = 1065.0
 offset_bottom = 167.0
+theme = ExtResource("1_ss8nx")
 text = "Next"
 
 [node name="ThirdButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 819.0
-offset_top = 514.0
-offset_right = 1060.0
-offset_bottom = 585.0
+offset_left = 774.0
+offset_top = 515.0
+offset_right = 1109.0
+offset_bottom = 586.0
+theme = ExtResource("1_ss8nx")
+theme_override_font_sizes/font_size = 18
 text = "Third"
 
 [node name="Ignorance" type="Label" parent="CanvasLayer"]
@@ -137,9 +156,9 @@ theme_override_font_sizes/font_size = 24
 text = "IGNORANCE"
 
 [node name="Bliss" type="Label" parent="CanvasLayer"]
-offset_left = 226.0
+offset_left = 221.569
 offset_top = 111.0
-offset_right = 288.0
+offset_right = 283.569
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -163,7 +182,7 @@ offset_bottom = 283.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_rfdem")
-text = "Stats:"
+text = "Answer:"
 
 [node name="Background" type="Sprite2D" parent="CanvasLayer"]
 z_index = -2
@@ -177,10 +196,29 @@ offset_left = 1028.0
 offset_top = 5.0
 offset_right = 1153.0
 offset_bottom = 58.0
+theme = ExtResource("1_ss8nx")
 text = "Exit"
+
+[node name="CompleteMessage" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+offset_left = 306.0
+offset_top = 193.0
+offset_right = 847.0
+offset_bottom = 496.0
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_2i483")
+text = "Good job with the questions. Now you have a better understanding on the consequences of actions."
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_ke1ai")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cf4ee")
+autoplay = true
 
 [connection signal="button_down" from="CanvasLayer/YesButton" to="GameManager" method="_on_yes_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/NoButton" to="GameManager" method="_on_no_button_button_down"]

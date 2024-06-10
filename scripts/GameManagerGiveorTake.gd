@@ -10,6 +10,8 @@ extends Node
 @onready var win_message = %WinMessage
 @onready var over_take_message = %OverTakeMessage
 @onready var over_give_messaage = %OverGiveMessaage
+@onready var instructions = %Instructions
+@onready var close_instructions = %CloseInstructions
 
 # Packed Scenes
 var main_menu = load("res://scenes/main.tscn")
@@ -31,6 +33,8 @@ func _ready():
 	# Setup the first card
 	take_text.text = data.records[card_counter][TAKE_Q_IDX]
 	give_text.text = data.records[card_counter][GIVE_Q_IDX]
+	instructions.visible = true
+	close_instructions.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,6 +56,7 @@ func _on_give_button_down():
 
 func _on_take_button_down():
 	if card_counter == data.records.size()-1: # if we are at the end of questions
+		win_message.visible = true
 		return
 	progress.value += int(data.records[card_counter][TAKE_POINTS_IDX])
 	if check_score():
@@ -73,3 +78,8 @@ func check_score():
 		over_give_messaage.visible = true
 		return true
 	return false
+
+
+func _on_close_instructions_button_down():
+	instructions.visible = false
+	close_instructions.queue_free()
