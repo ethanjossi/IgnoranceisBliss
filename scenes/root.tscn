@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://uf7uuh247fha" path="res://assets/batteryoutline.png" id="1_8hflk"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_ke1ai"]
-[ext_resource type="Theme" uid="uid://gf3bs3l6k307" path="res://ignoranceisbliss.tres" id="1_ss8nx"]
+[ext_resource type="Theme" uid="uid://b4apqkmt4n6ts" path="res://ignoranceisbliss.tres" id="1_ss8nx"]
 [ext_resource type="Texture2D" uid="uid://cgp1r7qi6ep6j" path="res://assets/background.jpeg" id="2_88oye"]
 [ext_resource type="AudioStream" uid="uid://g6ri47ors4m7" path="res://assets/organsound.mp3" id="5_cf4ee"]
 
