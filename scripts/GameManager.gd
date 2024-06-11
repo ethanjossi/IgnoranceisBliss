@@ -18,7 +18,7 @@ extends Node
 var main_menu = load("res://scenes/main.tscn")
 
 # Constants
-const CSV_FILE = "IgnoranceIsBlissQuestions.csv"
+const CSV_FILE = "IgnoranceIsBlissQuestions2.csv"
 const QUESTION_IDX = 0
 const YES_RESP_IDX = 1
 const NO_RESP_IDX = 2

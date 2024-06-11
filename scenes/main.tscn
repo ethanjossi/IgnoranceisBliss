@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dolv5f1uarc2w"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_aehyi"]
-[ext_resource type="Theme" uid="uid://bcejw5ur6oqnr" path="res://main.tres" id="2_rav1l"]
+[ext_resource type="Theme" uid="uid://ce8au6vrawcbo" path="res://main.tres" id="2_rav1l"]
 [ext_resource type="Texture2D" uid="uid://xysdnbespjml" path="res://assets/mainbackground.jpeg" id="2_u20je"]
 [ext_resource type="AudioStream" uid="uid://g6ri47ors4m7" path="res://assets/organsound.mp3" id="4_t62j0"]
 
